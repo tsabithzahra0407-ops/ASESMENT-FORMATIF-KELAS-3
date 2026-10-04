@@ -3,35 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petualangan Bahasa Kelas 3 - Asesmen Formatif Bab 2: Kawan Seiring</title>
+    <title>Petualangan Bahasa Kelas 3 - Asesmen Formatif Bab 2</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Inter & Fredoka for fun, friendly typography -->
+    <!-- Font Fredoka & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         fredoka: ['Fredoka', 'sans-serif'],
-                        sans: ['Inter', 'sans-serif']
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
                     },
                     colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985'
-                        },
                         pastel: {
-                            green: '#e6f4ea',
-                            yellow: '#fef7e0',
+                            blue: '#e0f2fe',
+                            cream: '#fef3c7',
+                            mint: '#d1fae5',
+                            pink: '#ffe4e6',
                             purple: '#f3e8ff',
-                            pink: '#fce7f3'
+                            amber: '#fef3c7'
                         }
                     }
                 }
@@ -40,16 +34,18 @@
     </script>
     <style>
         body {
-            font-family: 'Fredoka', 'Inter', sans-serif;
-            background-color: #f4f8fa;
-            color: #2d3748;
+            font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+            background-color: #f0fdf4;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #1e293b;
             -webkit-tap-highlight-color: transparent;
         }
         .btn-bounce {
             transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
         .btn-bounce:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
         .text-large-mode {
             font-size: 1.25rem !important;
@@ -60,7 +56,6 @@
         .text-large-mode .q-title {
             font-size: 1.5rem !important;
         }
-        /* Custom scrollbar for clean visual */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -75,122 +70,165 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between p-3 sm:p-6 select-none">
 
-    <!-- Top Bar & Mascot Header -->
-    <header class="w-full max-w-3xl bg-white rounded-3xl shadow-sm border border-sky-100 p-4 sm:p-6 mb-4 transition-all">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- Top Global Header Bar -->
+    <header class="w-full max-w-4xl bg-white/90 backdrop-blur-md rounded-3xl shadow-sm border border-emerald-100 p-4 mb-4 transition-all sticky top-2 z-40">
+        <div class="flex flex-wrap items-center justify-between gap-3">
             
-            <!-- Logo & Title Header -->
+            <!-- Logo & Title -->
             <div class="flex items-center gap-3">
-                <!-- SVG Illustration: Guru dan Siswa -->
-                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-sky-100 rounded-2xl flex items-center justify-center shrink-0 border-2 border-sky-200 overflow-hidden relative">
-                    <svg class="w-14 h-14 text-sky-600" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Guru -->
-                        <circle cx="35" cy="35" r="14" fill="#38bdf8"/>
-                        <path d="M15 75C15 58 24 50 35 50C46 50 55 58 55 75" fill="#0284c7"/>
-                        <!-- Glasses for teacher -->
-                        <circle cx="30" cy="34" r="4" stroke="#ffffff" stroke-width="2"/>
-                        <circle cx="40" cy="34" r="4" stroke="#ffffff" stroke-width="2"/>
-                        <line x1="34" y1="34" x2="36" y2="34" stroke="#ffffff" stroke-width="2"/>
-                        
-                        <!-- Siswa -->
-                        <circle cx="68" cy="42" r="11" fill="#f43f5e"/>
-                        <path d="M52 80C52 66 59 60 68 60C77 60 84 66 84 80" fill="#e11d48"/>
-                        <circle cx="68" cy="38" r="8" fill="#fecdd3"/>
-                    </svg>
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-100 rounded-2xl flex items-center justify-center shrink-0 border-2 border-emerald-200">
+                    <span class="text-2xl sm:text-3xl">📚</span>
                 </div>
                 <div>
-                    <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-bold tracking-wide uppercase mb-1">
-                        Bahasa Indonesia Kelas 3 SD
+                    <span class="inline-block px-2.5 py-0.5 bg-amber-100 text-amber-800 rounded-full text-[11px] font-bold tracking-wide uppercase">
+                        Bahasa Indonesia Kelas 3
                     </span>
-                    <h1 class="text-xl sm:text-2xl font-bold text-slate-800 leading-snug">
+                    <h1 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">
                         Asesmen Formatif Bab 2
                     </h1>
-                    <p class="text-xs sm:text-sm text-slate-500 font-medium">
-                        Tema: <span class="text-sky-600 font-semibold">"Kawan Seiring"</span>
-                    </p>
                 </div>
             </div>
 
-            <!-- Accessibility Controls (ABK Friendly) -->
-            <div class="flex items-center gap-2 bg-slate-50 p-2 rounded-2xl border border-slate-200">
-                <!-- Text Size Toggle -->
-                <button id="btnTextSize" title="Ubah Ukuran Teks" onclick="toggleTextSize()" class="p-2 sm:px-3 sm:py-2 bg-white hover:bg-sky-50 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
-                    <span class="text-base">Aa</span>
-                    <span class="hidden sm:inline">Teks</span>
+            <!-- Accessibility & Audio Control Panel -->
+            <div class="flex items-center gap-1.5 bg-slate-50 p-1.5 rounded-2xl border border-slate-200">
+                <!-- Toggle BGM Music -->
+                <button id="btnBgm" onclick="toggleBgm()" title="BGM Musik Santai" class="p-2 bg-white hover:bg-emerald-50 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
+                    <span id="bgmIcon">🎵</span>
+                    <span id="bgmText" class="hidden sm:inline">Musik</span>
                 </button>
 
-                <!-- Audio Sound FX Toggle -->
-                <button id="btnSound" title="Matikan/Hidupkan Suara" onclick="toggleSound()" class="p-2 sm:px-3 sm:py-2 bg-white hover:bg-sky-50 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
+                <!-- Toggle Sound FX -->
+                <button id="btnSound" onclick="toggleSound()" title="Efek Suara Jawaban" class="p-2 bg-white hover:bg-emerald-50 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
                     <span id="soundIcon">🔊</span>
                     <span id="soundText" class="hidden sm:inline">Suara</span>
                 </button>
 
-                <!-- Text to Speech Button -->
-                <button id="btnReadAloud" title="Bacakan Soal Ini" onclick="readCurrentQuestion()" class="p-2 sm:px-3 sm:py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
+                <!-- Text Size Switcher -->
+                <button id="btnTextSize" onclick="toggleTextSize()" title="Ukuran Huruf" class="p-2 bg-white hover:bg-emerald-50 text-slate-700 rounded-xl border border-slate-200 text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
+                    <span class="text-sm font-black">Aa</span>
+                    <span class="hidden sm:inline">Teks</span>
+                </button>
+
+                <!-- Read Aloud Button -->
+                <button id="btnReadAloud" onclick="readCurrentQuestion()" title="Bacakan Teks Soal" class="p-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold flex items-center gap-1 btn-bounce shadow-sm">
                     <span>🗣️</span>
-                    <span class="hidden sm:inline">Baca Soal</span>
+                    <span class="hidden sm:inline">Baca</span>
                 </button>
             </div>
 
         </div>
     </header>
 
-    <!-- Main Quiz Card -->
-    <main id="quizContainer" class="w-full max-w-3xl bg-white rounded-3xl shadow-md border border-slate-100 p-5 sm:p-8 flex-1 flex flex-col justify-between transition-all relative">
+    <!-- VIEW 1: LANDING PAGE / ROLE SELECTION -->
+    <section id="viewLanding" class="w-full max-w-xl bg-white rounded-3xl shadow-xl border border-emerald-100 p-6 sm:p-10 my-auto text-center transition-all">
+        <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center text-4xl mx-auto mb-4 border-2 border-emerald-200 shadow-sm">
+            🎒
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2">Selamat Datang!</h2>
+        <p class="text-sm text-slate-500 mb-8 font-medium">Petualangan Bahasa Indonesia Bab 2: <span class="text-emerald-600 font-bold">"Kawan Seiring"</span></p>
+
+        <div class="space-y-4">
+            <!-- Button Masuk Siswa -->
+            <button onclick="showStudentForm()" class="w-full py-4 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-2xl shadow-lg transition btn-bounce flex items-center justify-center gap-3 text-lg">
+                <span>👦👧</span>
+                <span>Masuk Sebagai Siswa</span>
+            </button>
+
+            <!-- Button Dashboard Guru -->
+            <button onclick="showTeacherLoginModal()" class="w-full py-3.5 px-6 bg-amber-50 hover:bg-amber-100 text-amber-900 border-2 border-amber-200 font-bold rounded-2xl transition btn-bounce flex items-center justify-center gap-2 text-base">
+                <span>👨‍🏫</span>
+                <span>Dashboard Guru / Nilai</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- VIEW 2: STUDENT IDENTITY FORM -->
+    <section id="viewStudentForm" class="w-full max-w-md bg-white rounded-3xl shadow-xl border border-emerald-100 p-6 sm:p-8 my-auto transition-all hidden">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <button onclick="showLanding()" class="p-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-600 font-bold text-xs btn-bounce">
+                ⬅️ Kembali
+            </button>
+            <h3 class="text-lg font-bold text-slate-800">Isi Data Siswa</h3>
+        </div>
+
+        <form onsubmit="startQuiz(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Nama Lengkap Siswa:</label>
+                <input type="text" id="studentName" required placeholder="Ketik nama lengkapmu di sini..." class="w-full p-3.5 rounded-2xl border-2 border-slate-200 focus:border-emerald-500 focus:outline-none text-slate-800 font-medium text-sm">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Pilihan Kelas:</label>
+                <select id="studentClass" required class="w-full p-3.5 rounded-2xl border-2 border-slate-200 focus:border-emerald-500 focus:outline-none text-slate-800 font-medium text-sm bg-white">
+                    <option value="3A">Kelas 3A</option>
+                    <option value="3B">Kelas 3B</option>
+                    <option value="3C">Kelas 3C</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full mt-4 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-md transition btn-bounce flex items-center justify-center gap-2 text-base">
+                <span>Mulai Mengerjakan Soal</span>
+                <span>🚀</span>
+            </button>
+        </form>
+    </section>
+
+    <!-- VIEW 3: MAIN QUIZ INTERFACE -->
+    <main id="viewQuiz" class="w-full max-w-3xl bg-white rounded-3xl shadow-md border border-slate-100 p-5 sm:p-8 my-auto flex-1 flex flex-col justify-between transition-all hidden">
         
-        <!-- Top Status Bar (Question Counter & Score) -->
+        <!-- Status Bar (Question Counter, Progress Bar & Score) -->
         <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
             <div class="flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm" id="qNumBadge">1</span>
+                <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm" id="qNumBadge">1</span>
                 <div>
                     <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Kemajuan</p>
-                    <p class="text-sm font-bold text-slate-700">Soal <span id="currentQText">1</span> dari <span id="totalQText">10</span></p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-700">Soal <span id="currentQText">1</span> dari <span id="totalQText">10</span></p>
                 </div>
             </div>
 
             <!-- Progress Bar -->
             <div class="w-1/3 sm:w-1/2 bg-slate-100 h-3 rounded-full overflow-hidden">
-                <div id="progressBar" class="bg-gradient-to-r from-sky-400 to-indigo-500 h-full w-0 transition-all duration-300"></div>
+                <div id="progressBar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full w-0 transition-all duration-300"></div>
             </div>
 
             <!-- Score Badge -->
             <div class="bg-amber-50 px-3 py-1.5 rounded-2xl border border-amber-200 flex items-center gap-1.5">
                 <span class="text-base">⭐</span>
-                <span class="text-sm font-bold text-amber-800" id="scoreText">0 Poin</span>
+                <span class="text-xs sm:text-sm font-bold text-amber-800" id="scoreText">0 Poin</span>
             </div>
         </div>
 
-        <!-- Question Content Area -->
+        <!-- Question Body -->
         <div class="flex-1 flex flex-col justify-center my-2">
             
             <!-- Category Tag -->
             <div class="mb-2">
-                <span id="questionCategory" class="inline-block px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-100 text-emerald-800">
-                    Struktur Cerita
+                <span id="questionCategory" class="inline-block px-3 py-1 rounded-lg text-xs font-bold bg-sky-100 text-sky-800">
+                    Kategori Soal
                 </span>
             </div>
 
-            <!-- Question Text -->
-            <h2 id="questionTitle" class="q-title text-lg sm:text-xl font-bold text-slate-800 leading-relaxed mb-6">
+            <!-- Question Title -->
+            <h2 id="questionTitle" class="q-title text-base sm:text-xl font-bold text-slate-800 leading-relaxed mb-4">
                 Memuat pertanyaan...
             </h2>
 
-            <!-- Visual Helper / Context Box (if available) -->
-            <div id="visualBox" class="mb-6 p-4 bg-sky-50 rounded-2xl border border-sky-100 hidden">
-                <p id="visualText" class="text-sm sm:text-base text-sky-900 italic font-medium"></p>
+            <!-- Visual Context Helper Box -->
+            <div id="visualBox" class="mb-5 p-4 bg-emerald-50/70 rounded-2xl border border-emerald-100 hidden">
+                <p id="visualText" class="text-xs sm:text-sm text-emerald-900 italic font-medium leading-relaxed"></p>
             </div>
 
-            <!-- Options Grid -->
-            <div id="optionsContainer" class="grid grid-cols-1 gap-3 sm:gap-4">
-                <!-- Option buttons dynamically inserted -->
+            <!-- Answer Options Grid -->
+            <div id="optionsContainer" class="grid grid-cols-1 gap-3">
+                <!-- Dynamically populated -->
             </div>
 
-            <!-- Explanation Feedback Box (Shown after answer) -->
-            <div id="feedbackBox" class="mt-6 p-4 rounded-2xl border hidden transition-all">
+            <!-- Explanation Feedback Box -->
+            <div id="feedbackBox" class="mt-5 p-4 rounded-2xl border hidden transition-all">
                 <div class="flex items-start gap-3">
                     <span id="feedbackIcon" class="text-2xl">💡</span>
                     <div>
-                        <h4 id="feedbackTitle" class="font-bold text-sm mb-1">Penjelasan:</h4>
+                        <h4 id="feedbackTitle" class="font-bold text-xs sm:text-sm mb-0.5">Penjelasan:</h4>
                         <p id="feedbackText" class="text-xs sm:text-sm text-slate-700 leading-relaxed"></p>
                     </div>
                 </div>
@@ -198,13 +236,13 @@
 
         </div>
 
-        <!-- Footer Navigation -->
-        <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between">
-            <button id="btnPrev" onclick="prevQuestion()" disabled class="px-4 py-2.5 bg-slate-100 text-slate-400 font-bold text-sm rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-200 transition btn-bounce">
+        <!-- Navigation Buttons -->
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+            <button id="btnPrev" onclick="prevQuestion()" disabled class="px-4 py-2.5 bg-slate-100 text-slate-400 font-bold text-xs sm:text-sm rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-200 transition btn-bounce">
                 ⬅️ Sebelumnya
             </button>
 
-            <button id="btnNext" onclick="nextQuestion()" disabled class="px-6 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-bold text-sm rounded-2xl shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition btn-bounce flex items-center gap-2">
+            <button id="btnNext" onclick="nextQuestion()" disabled class="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm rounded-2xl shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition btn-bounce flex items-center gap-2">
                 <span>Lanjut</span>
                 <span>➡️</span>
             </button>
@@ -212,51 +250,149 @@
 
     </main>
 
-    <!-- Result Screen Overlay (Hidden by default) -->
-    <div id="resultModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl border border-white/20 transform transition-all">
-            
-            <div class="w-24 h-24 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-4 border-4 border-amber-200 shadow-inner">
-                🏆
+    <!-- VIEW 4: STUDENT RESULT & FEEDBACK REFLECTION -->
+    <section id="viewResult" class="w-full max-w-lg bg-white rounded-3xl shadow-xl border border-emerald-100 p-6 sm:p-8 my-auto text-center transition-all hidden">
+        <div class="w-20 h-20 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-3 border-4 border-amber-200 shadow-inner">
+            🏆
+        </div>
+
+        <h2 class="text-2xl font-bold text-slate-800 mb-1">Hebat Sekali! 🎉</h2>
+        <p class="text-slate-500 text-xs sm:text-sm mb-5">Kamu telah menyelesaikan Asesmen Formatif Bab 2</p>
+
+        <!-- Score Breakdown Box -->
+        <div class="bg-slate-50 rounded-2xl p-4 mb-5 border border-slate-200 grid grid-cols-2 gap-3">
+            <div class="bg-white p-3 rounded-xl border border-slate-100">
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Nilai Akhir</p>
+                <p id="finalScoreText" class="text-2xl sm:text-3xl font-extrabold text-emerald-600">0</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100">
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Jawaban Benar</p>
+                <p id="finalCorrectText" class="text-2xl sm:text-3xl font-extrabold text-teal-600">0 / 10</p>
+            </div>
+        </div>
+
+        <!-- Student Impression / Reflection Form -->
+        <div class="bg-sky-50/70 p-4 rounded-2xl border border-sky-100 text-left mb-6">
+            <label class="block text-xs font-bold text-sky-900 mb-1 flex items-center gap-1.5">
+                <span>📝</span>
+                <span>Tuliskan Kesan & Pesanmu tentang kuis ini:</span>
+            </label>
+            <textarea id="studentImpression" rows="3" placeholder="Contoh: Kuisnya seru sekali! Soal fakta fiksi favorit saya..." class="w-full p-3 rounded-xl border border-sky-200 focus:outline-none focus:border-sky-500 text-xs sm:text-sm text-slate-800 font-medium bg-white"></textarea>
+            <button onclick="submitImpression()" id="btnSubmitImpression" class="mt-2 w-full py-2 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl text-xs transition btn-bounce">
+                Simpan Kesan & Pesan
+            </button>
+            <p id="impressionSavedMsg" class="text-[11px] text-emerald-600 font-bold text-center mt-2 hidden">✅ Kesan & Pesan berhasil tersimpan di Rekap Guru!</p>
+        </div>
+
+        <div class="flex gap-3">
+            <button onclick="restartQuiz()" class="flex-1 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-md transition btn-bounce text-sm">
+                🔄 Ulangi Kuis
+            </button>
+            <button onclick="showLanding()" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl transition btn-bounce text-sm">
+                🏠 Beranda
+            </button>
+        </div>
+    </section>
+
+    <!-- VIEW 5: TEACHER DASHBOARD VIEW -->
+    <section id="viewTeacherDashboard" class="w-full max-w-4xl bg-white rounded-3xl shadow-xl border border-slate-100 p-5 sm:p-8 my-auto transition-all hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+            <div>
+                <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-bold uppercase">
+                    Panel Guru
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-800 mt-1">Rekapitulasi Nilai Siswa</h2>
             </div>
 
-            <h2 class="text-2xl font-bold text-slate-800 mb-1">Hebat Sekali! 🎉</h2>
-            <p class="text-slate-500 text-sm mb-6">Kamu telah menyelesaikan Asesmen Formatif Bab 2</p>
-
-            <!-- Score Display Box -->
-            <div class="bg-slate-50 rounded-2xl p-4 mb-6 border border-slate-200 grid grid-cols-2 gap-3">
-                <div class="bg-white p-3 rounded-xl border border-slate-100">
-                    <p class="text-xs text-slate-400 font-bold uppercase">Nilai Akhir</p>
-                    <p id="finalScoreText" class="text-3xl font-extrabold text-sky-600">0</p>
-                </div>
-                <div class="bg-white p-3 rounded-xl border border-slate-100">
-                    <p class="text-xs text-slate-400 font-bold uppercase">Jawaban Benar</p>
-                    <p id="finalCorrectText" class="text-3xl font-extrabold text-emerald-500">0 / 10</p>
-                </div>
-            </div>
-
-            <!-- Encouragement Message -->
-            <p id="resultMessage" class="text-sm text-slate-700 font-medium mb-6 bg-sky-50 p-3 rounded-xl border border-sky-100">
-                Kerja bagus! Terus semangat belajar Bahasa Indonesia ya!
-            </p>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3">
-                <button onclick="restartQuiz()" class="flex-1 py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-2xl shadow-md transition btn-bounce">
-                    🔄 Ulangi Kuis
+            <div class="flex items-center gap-2">
+                <button onclick="exportToCSV()" class="px-3.5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-sm btn-bounce">
+                    <span>📊</span>
+                    <span>Unduh Excel (CSV)</span>
+                </button>
+                <button onclick="showLanding()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs btn-bounce">
+                    Keluar
                 </button>
             </div>
+        </div>
 
+        <!-- Class Quick Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                <p class="text-xs text-emerald-700 font-bold uppercase">Total Siswa</p>
+                <p id="statTotalStudents" class="text-2xl font-extrabold text-emerald-900">0</p>
+            </div>
+            <div class="bg-sky-50 p-4 rounded-2xl border border-sky-100">
+                <p class="text-xs text-sky-700 font-bold uppercase">Rata-Rata Nilai</p>
+                <p id="statAvgScore" class="text-2xl font-extrabold text-sky-900">0</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100 col-span-2 sm:col-span-1">
+                <p class="text-xs text-amber-700 font-bold uppercase">Nilai Tertinggi</p>
+                <p id="statHighScore" class="text-2xl font-extrabold text-amber-900">0</p>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-4">
+            <input type="text" id="teacherSearch" oninput="renderTeacherTable()" placeholder="🔍 Cari nama siswa atau kelas..." class="w-full p-3 rounded-2xl border-2 border-slate-200 focus:outline-none focus:border-emerald-500 text-xs sm:text-sm font-medium">
+        </div>
+
+        <!-- Results Table -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 mb-4">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                    <tr class="bg-slate-50 text-slate-500 border-b border-slate-200">
+                        <th class="p-3 font-bold">No</th>
+                        <th class="p-3 font-bold">Nama Siswa</th>
+                        <th class="p-3 font-bold">Kelas</th>
+                        <th class="p-3 font-bold text-center">Nilai</th>
+                        <th class="p-3 font-bold">Waktu</th>
+                        <th class="p-3 font-bold">Kesan & Pesan Siswa</th>
+                    </tr>
+                </thead>
+                <tbody id="teacherTableBody" class="divide-y divide-slate-100 font-medium text-slate-700">
+                    <!-- Dynamic Rows -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-end">
+            <button onclick="clearAllData()" class="text-xs text-rose-500 hover:text-rose-700 font-bold underline">
+                🗑️ Hapus Semua Rekap Data Siswa
+            </button>
+        </div>
+    </section>
+
+    <!-- MODAL: TEACHER PIN AUTHENTICATION -->
+    <div id="modalTeacherPin" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-xs w-full p-6 text-center shadow-2xl border border-white/20">
+            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
+                🔒
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-1">PIN Masuk Guru</h3>
+            <p class="text-xs text-slate-500 mb-4">Petunjuk PIN Default: <span class="font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">1234</span></p>
+
+            <form onsubmit="verifyTeacherPin(event)" class="space-y-3">
+                <input type="password" id="inputPin" maxlength="6" required placeholder="Masukkan PIN" class="w-full p-3 rounded-2xl border-2 border-slate-200 text-center font-bold text-lg tracking-widest focus:outline-none focus:border-amber-500">
+                <p id="pinError" class="text-xs text-rose-500 font-bold hidden">PIN Salah! Silakan coba lagi.</p>
+                <div class="flex gap-2">
+                    <button type="button" onclick="closeTeacherModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs">
+                        Batal
+                    </button>
+                    <button type="submit" class="flex-1 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-xs shadow-md">
+                        Masuk
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
     <script>
-        // Comprehensive Question Bank for Bahasa Indonesia Kelas 3 Bab 2 "Kawan Seiring"
+        // Question Bank Bahasa Indonesia Kelas 3 Bab 2 (Kawan Seiring & PUEBI)
         const questionsData = [
             {
                 category: "Struktur Cerita",
-                question: "Bagian manakah dari cerita yang bertugas mengenalkan tokoh utama dan tempat kejadian cerita?",
-                visual: "📖 Contoh: Pada suatu hari di sekolah, Lani dan Budi sedang duduk bersama...",
+                question: "Bagian manakah dari cerita yang bertugas mengenalkan tokoh utama, suasana, dan tempat kejadian cerita?",
+                visual: "📖 Contoh: Pada suatu pagi di sekolah, Lani dan Budi sedang duduk bersama...",
                 options: [
                     "Bagian Awal Cerita",
                     "Bagian Tengah Cerita",
@@ -268,19 +404,19 @@
             {
                 category: "Fakta & Fiksi",
                 question: "Manakah kalimat di bawah ini yang merupakan contoh KALIMAT FIKSI (khayalan)?",
-                visual: "💭 Cerita fiksi adalah cerita buatan atau hasil imajinasi yang tidak terjadi di dunia nyata.",
+                visual: "💭 Cerita fiksi adalah hasil imajinasi buatan yang tidak terjadi di dunia nyata.",
                 options: [
                     "Kucing itu tidur lelap di teras rumah.",
                     "Burung hantu itu memakai kacamata dan membaca buku cerita.",
                     "Anak-anak bermain bola di lapangan sekolah."
                 ],
                 answer: 1,
-                explanation: "Burung hantu membaca buku adalah hal fiksi (imajinasi) karena hewan di dunia nyata tidak bisa membaca buku."
+                explanation: "Burung hantu membaca buku adalah hal fiksi (imajinasi) karena hewan di dunia nyata tidak bisa membaca."
             },
             {
                 category: "Fakta & Fiksi",
                 question: "Kalimat: 'Matahari terbit di sebelah timur pada pagi hari.' Kalimat tersebut termasuk...",
-                visual: "☀️ Kejadian ini benar-benar terjadi dan bisa kita lihat setiap hari.",
+                visual: "☀️ Kejadian ini benar-benar nyata dan bisa kita amati setiap hari.",
                 options: [
                     "Kalimat Fiksi",
                     "Kalimat Fakta",
@@ -291,7 +427,7 @@
             },
             {
                 category: "Struktur Cerita",
-                question: "Masalah, peristiwa penting, dan pengalaman yang dialami tokoh terdapat pada bagian...",
+                question: "Masalah, peristiwa penting, dan petualangan yang dialami tokoh terdapat pada bagian...",
                 visual: "⚡ Contoh: Lani kehilangan pensil kesayangannya dan meminta bantuan Budi untuk mencari...",
                 options: [
                     "Bagian Awal Cerita",
@@ -314,16 +450,16 @@
                 explanation: "'Rani membaca buku di perpustakaan' adalah kalimat tunggal karena terdiri dari 1 Subjek (Rani) & 1 Predikat (membaca)."
             },
             {
-                category: "Sikap Berteman (Kawan Seiring)",
-                question: "Ketika pensil temanmu jatuh ke lantai, sikap teman yang baik adalah...",
-                visual: "🤝 Berteman baik berarti saling membantu dan peduli sesama teman.",
+                category: "PUEBI & Ejaan",
+                question: "Penulisan huruf kapital yang BENAR untuk nama orang dan tempat di bawah ini adalah...",
+                visual: "✍️ Huruf pertama nama orang dan nama kota/tempat harus menggunakan huruf kapital.",
                 options: [
-                    "Melihatnya saja dan berpura-pura tidak tahu",
-                    "Membantu mengambilkan pensil dengan ramah",
-                    "Mentertawakan teman yang menjatuhkan pensil"
+                    "budi pergi ke kota bandung.",
+                    "Budi pergi ke Kota Bandung.",
+                    "budi Pergi Ke kota Bandung."
                 ],
                 answer: 1,
-                explanation: "Teman yang baik senantiasa membantu temannya yang membutuhkan pertolongan dengan sikap yang ramah."
+                explanation: "Kata 'Budi' (nama orang) dan 'Kota Bandung' (nama tempat) diawali dengan huruf kapital."
             },
             {
                 category: "Kalimat Transitif & Intransitif",
@@ -352,7 +488,7 @@
             {
                 category: "Kata Sapaan & Kesopanan",
                 question: "Kata yang wajib kita ucapkan setelah menerima bantuan atau pemberian dari teman adalah...",
-                visual: "🎁 Menghargai kebaikan teman dengan kalimat sopan.",
+                visual: "🎁 Menghargai kebaikan teman dengan kalimat yang sopan.",
                 options: [
                     "Minta maaf",
                     "Permisi",
@@ -375,62 +511,204 @@
             }
         ];
 
+        // Global State Variables
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questionsData.length).fill(null);
         let score = 0;
         let soundEnabled = true;
+        let bgmEnabled = false;
         let isLargeText = false;
+        let currentStudent = { name: '', class: '', timestamp: '', recordId: null };
 
-        // Web Audio API Synthesizer for sound effects
+        // Web Audio Synthesizer Engine
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         let audioCtx = null;
+        let bgmInterval = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioCtx();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Cozy BGM Chords Generator
+        function playCozyNote(freq, duration = 0.8) {
+            if (!bgmEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+
+                gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function startBgmSequence() {
+            stopBgmSequence();
+            if (!bgmEnabled) return;
+
+            initAudio();
+            // Pentatonic Cozy Pentatonic Notes (C Major Pentatonic)
+            const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
+            let step = 0;
+
+            bgmInterval = setInterval(() => {
+                if (!bgmEnabled) return;
+                const note = notes[step % notes.length];
+                playCozyNote(note, 1.2);
+                step++;
+            }, 1200);
+        }
+
+        function stopBgmSequence() {
+            if (bgmInterval) {
+                clearInterval(bgmInterval);
+                bgmInterval = null;
+            }
+        }
+
+        function toggleBgm() {
+            bgmEnabled = !bgmEnabled;
+            document.getElementById('bgmIcon').innerText = bgmEnabled ? '🎵' : '🔇';
+            document.getElementById('bgmText').innerText = bgmEnabled ? 'Musik' : 'Mute';
+            document.getElementById('btnBgm').classList.toggle('bg-emerald-100', bgmEnabled);
+
+            if (bgmEnabled) {
+                startBgmSequence();
+            } else {
+                stopBgmSequence();
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundIcon').innerText = soundEnabled ? '🔊' : '🔇';
+            document.getElementById('soundText').innerText = soundEnabled ? 'Suara' : 'Mute';
+            document.getElementById('btnSound').classList.toggle('bg-emerald-100', soundEnabled);
+            if (soundEnabled) playSoundEffect('click');
+        }
 
         function playSoundEffect(type) {
             if (!soundEnabled) return;
             try {
-                if (!audioCtx) audioCtx = new AudioCtx();
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-
+                initAudio();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
 
                 if (type === 'correct') {
-                    // Happy chime (C5 to G5)
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
                     osc.frequency.exponentialRampToValueAtTime(783.99, audioCtx.currentTime + 0.15); // G5
-                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.3);
                 } else if (type === 'wrong') {
-                    // Soft low pop
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(130, audioCtx.currentTime + 0.2);
-                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.2);
                 } else if (type === 'click') {
-                    // Gentle tap sound
                     osc.type = 'sine';
-                    osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(420, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.08);
                 }
-            } catch (e) {
-                console.log("Audio not supported or blocked");
+            } catch (e) {}
+        }
+
+        // Navigation Views Control
+        function hideAllViews() {
+            document.getElementById('viewLanding').classList.add('hidden');
+            document.getElementById('viewStudentForm').classList.add('hidden');
+            document.getElementById('viewQuiz').classList.add('hidden');
+            document.getElementById('viewResult').classList.add('hidden');
+            document.getElementById('viewTeacherDashboard').classList.add('hidden');
+        }
+
+        function showLanding() {
+            hideAllViews();
+            document.getElementById('viewLanding').classList.remove('hidden');
+        }
+
+        function showStudentForm() {
+            playSoundEffect('click');
+            hideAllViews();
+            document.getElementById('viewStudentForm').classList.remove('hidden');
+        }
+
+        function showTeacherLoginModal() {
+            playSoundEffect('click');
+            document.getElementById('modalTeacherPin').classList.remove('hidden');
+            document.getElementById('inputPin').value = '';
+            document.getElementById('pinError').classList.add('hidden');
+        }
+
+        function closeTeacherModal() {
+            document.getElementById('modalTeacherPin').classList.add('hidden');
+        }
+
+        function verifyTeacherPin(e) {
+            e.preventDefault();
+            const pin = document.getElementById('inputPin').value;
+            if (pin === '1234') {
+                closeTeacherModal();
+                hideAllViews();
+                renderTeacherDashboard();
+                document.getElementById('viewTeacherDashboard').classList.remove('hidden');
+            } else {
+                document.getElementById('pinError').classList.remove('hidden');
             }
+        }
+
+        function startQuiz(e) {
+            e.preventDefault();
+            playSoundEffect('click');
+
+            const name = document.getElementById('studentName').value.trim();
+            const cls = document.getElementById('studentClass').value;
+
+            if (!name) return;
+
+            currentStudent = {
+                name: name,
+                class: cls,
+                timestamp: new Date().toLocaleString('id-ID'),
+                recordId: Date.now()
+            };
+
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            score = 0;
+
+            document.getElementById('scoreText').innerText = '0 Poin';
+
+            hideAllViews();
+            document.getElementById('viewQuiz').classList.remove('hidden');
+            renderQuestion();
         }
 
         function readCurrentQuestion() {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Stop current speech
+                window.speechSynthesis.cancel();
                 const q = questionsData[currentQuestionIndex];
                 let textToRead = q.question + ". Pilihan jawaban: ";
                 q.options.forEach((opt, idx) => {
@@ -439,29 +717,26 @@
 
                 const utterance = new SpeechSynthesisUtterance(textToRead);
                 utterance.lang = 'id-ID';
-                utterance.rate = 0.9; // Slower rate for easy understanding
+                utterance.rate = 0.9;
                 window.speechSynthesis.speak(utterance);
             } else {
-                alert("Fitur suara pembaca teks belum didukung di peramban ini.");
+                alert("Fitur pembaca teks belum didukung di peramban ini.");
             }
         }
 
         function renderQuestion() {
             const q = questionsData[currentQuestionIndex];
-            
-            // Update progress & headers
+
             document.getElementById('qNumBadge').innerText = currentQuestionIndex + 1;
             document.getElementById('currentQText').innerText = currentQuestionIndex + 1;
             document.getElementById('totalQText').innerText = questionsData.length;
-            
+
             const progressPercent = ((currentQuestionIndex + 1) / questionsData.length) * 100;
             document.getElementById('progressBar').style.width = `${progressPercent}%`;
 
-            // Category & Question Title
             document.getElementById('questionCategory').innerText = q.category;
             document.getElementById('questionTitle').innerText = q.question;
 
-            // Context Box
             const visualBox = document.getElementById('visualBox');
             const visualText = document.getElementById('visualText');
             if (q.visual) {
@@ -471,7 +746,6 @@
                 visualBox.classList.add('hidden');
             }
 
-            // Options Grid
             const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
 
@@ -479,14 +753,12 @@
 
             q.options.forEach((optText, index) => {
                 const btn = document.createElement('button');
-                btn.className = `w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between font-medium btn-bounce option-text text-sm sm:text-base`;
-                
-                // Style based on selection status
+                btn.className = `w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center justify-between font-medium btn-bounce option-text text-xs sm:text-sm`;
+
                 if (selectedAns === null) {
-                    btn.classList.add('bg-white', 'border-slate-200', 'hover:border-sky-300', 'hover:bg-sky-50/50', 'text-slate-700');
+                    btn.classList.add('bg-white', 'border-slate-200', 'hover:border-emerald-300', 'hover:bg-emerald-50/50', 'text-slate-700');
                     btn.onclick = () => selectOption(index);
                 } else {
-                    // Disabled state after picking
                     btn.disabled = true;
                     if (index === q.answer) {
                         btn.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900', 'font-bold');
@@ -497,11 +769,10 @@
                     }
                 }
 
-                // Inner content
-                const letterBadge = String.fromCharCode(65 + index); // A, B, C
+                const letterBadge = String.fromCharCode(65 + index);
                 btn.innerHTML = `
                     <div class="flex items-center gap-3">
-                        <span class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-slate-600 text-xs shrink-0 border border-slate-200">
+                        <span class="w-7 h-7 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-slate-600 text-xs shrink-0 border border-slate-200">
                             ${letterBadge}
                         </span>
                         <span>${optText}</span>
@@ -513,7 +784,7 @@
                 container.appendChild(btn);
             });
 
-            // Feedback Box Handling
+            // Feedback Box
             const feedbackBox = document.getElementById('feedbackBox');
             const feedbackTitle = document.getElementById('feedbackTitle');
             const feedbackText = document.getElementById('feedbackText');
@@ -523,11 +794,11 @@
                 feedbackBox.classList.remove('hidden');
                 feedbackText.innerText = q.explanation;
                 if (selectedAns === q.answer) {
-                    feedbackBox.className = "mt-6 p-4 rounded-2xl border bg-emerald-50 border-emerald-200 text-emerald-900";
+                    feedbackBox.className = "mt-5 p-4 rounded-2xl border bg-emerald-50 border-emerald-200 text-emerald-900";
                     feedbackIcon.innerText = "🎉";
-                    feedbackTitle.innerText = "Benar Sekali!";
+                    feedbackTitle.innerText = "Jawaban Kamu Benar!";
                 } else {
-                    feedbackBox.className = "mt-6 p-4 rounded-2xl border bg-amber-50 border-amber-200 text-amber-900";
+                    feedbackBox.className = "mt-5 p-4 rounded-2xl border bg-amber-50 border-amber-200 text-amber-900";
                     feedbackIcon.innerText = "💡";
                     feedbackTitle.innerText = "Pembahasan:";
                 }
@@ -535,9 +806,9 @@
                 feedbackBox.classList.add('hidden');
             }
 
-            // Navigation Buttons State
+            // Navigation State
             document.getElementById('btnPrev').disabled = (currentQuestionIndex === 0);
-            
+
             const btnNext = document.getElementById('btnNext');
             if (selectedAns !== null) {
                 btnNext.disabled = false;
@@ -552,10 +823,9 @@
         }
 
         function selectOption(index) {
-            playSoundEffect('click');
             userAnswers[currentQuestionIndex] = index;
-            
             const q = questionsData[currentQuestionIndex];
+
             if (index === q.answer) {
                 score += 10;
                 playSoundEffect('correct');
@@ -569,14 +839,13 @@
 
         function nextQuestion() {
             playSoundEffect('click');
-            // Cancel TTS if speaking
             if ('speechSynthesis' in window) window.speechSynthesis.cancel();
 
             if (currentQuestionIndex < questionsData.length - 1) {
                 currentQuestionIndex++;
                 renderQuestion();
             } else {
-                showResults();
+                finishQuiz();
             }
         }
 
@@ -590,9 +859,9 @@
             }
         }
 
-        function showResults() {
+        function finishQuiz() {
             playSoundEffect('correct');
-            
+
             let correctCount = 0;
             userAnswers.forEach((ans, idx) => {
                 if (ans === questionsData[idx].answer) correctCount++;
@@ -601,16 +870,44 @@
             document.getElementById('finalScoreText').innerText = score;
             document.getElementById('finalCorrectText').innerText = `${correctCount} / ${questionsData.length}`;
 
-            const msg = document.getElementById('resultMessage');
-            if (score >= 80) {
-                msg.innerText = "🌟 Luar biasa! Kamu sudah sangat memahami materi Bab 2 Kawan Seiring!";
-            } else if (score >= 60) {
-                msg.innerText = "👍 Bagus sekali! Tingkatkan terus latihanmu ya!";
-            } else {
-                msg.innerText = "💪 Tetap semangat! Kamu bisa membaca ulang materi Bab 2 dan mencoba lagi!";
-            }
+            // Save Initial Result to LocalStorage
+            saveQuizResult('-');
 
-            document.getElementById('resultModal').classList.remove('hidden');
+            document.getElementById('studentImpression').value = '';
+            document.getElementById('impressionSavedMsg').classList.add('hidden');
+            document.getElementById('btnSubmitImpression').disabled = false;
+
+            hideAllViews();
+            document.getElementById('viewResult').classList.remove('hidden');
+        }
+
+        function saveQuizResult(impressionText) {
+            let records = JSON.parse(localStorage.getItem('quiz_records') || '[]');
+
+            // Remove existing record if same session
+            records = records.filter(r => r.recordId !== currentStudent.recordId);
+
+            records.push({
+                recordId: currentStudent.recordId,
+                name: currentStudent.name,
+                class: currentStudent.class,
+                score: score,
+                timestamp: currentStudent.timestamp,
+                impression: impressionText || '-'
+            });
+
+            localStorage.setItem('quiz_records', JSON.stringify(records));
+        }
+
+        function submitImpression() {
+            const impressionText = document.getElementById('studentImpression').value.trim();
+            if (!impressionText) return;
+
+            saveQuizResult(impressionText);
+            playSoundEffect('click');
+
+            document.getElementById('impressionSavedMsg').classList.remove('hidden');
+            document.getElementById('btnSubmitImpression').disabled = true;
         }
 
         function restartQuiz() {
@@ -618,34 +915,106 @@
             currentQuestionIndex = 0;
             userAnswers.fill(null);
             score = 0;
-            document.getElementById('scoreText').innerText = `0 Poin`;
-            document.getElementById('resultModal').classList.add('hidden');
+            document.getElementById('scoreText').innerText = '0 Poin';
+
+            hideAllViews();
+            document.getElementById('viewQuiz').classList.remove('hidden');
             renderQuestion();
+        }
+
+        function renderTeacherDashboard() {
+            renderTeacherTable();
+        }
+
+        function renderTeacherTable() {
+            const records = JSON.parse(localStorage.getItem('quiz_records') || '[]');
+            const searchKeyword = document.getElementById('teacherSearch').value.toLowerCase();
+
+            const tbody = document.getElementById('teacherTableBody');
+            tbody.innerHTML = '';
+
+            const filtered = records.filter(r => 
+                r.name.toLowerCase().includes(searchKeyword) || 
+                r.class.toLowerCase().includes(searchKeyword)
+            );
+
+            // Update Stats
+            document.getElementById('statTotalStudents').innerText = records.length;
+            if (records.length > 0) {
+                const totalScore = records.reduce((acc, curr) => acc + curr.score, 0);
+                const avg = (totalScore / records.length).toFixed(1);
+                const max = Math.max(...records.map(r => r.score));
+                document.getElementById('statAvgScore').innerText = avg;
+                document.getElementById('statHighScore').innerText = max;
+            } else {
+                document.getElementById('statAvgScore').innerText = '0';
+                document.getElementById('statHighScore').innerText = '0';
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Belum ada data nilai siswa.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach((r, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition";
+                tr.innerHTML = `
+                    <td class="p-3 text-slate-400 font-bold">${idx + 1}</td>
+                    <td class="p-3 font-bold text-slate-800">${r.name}</td>
+                    <td class="p-3"><span class="px-2 py-0.5 bg-slate-100 rounded text-slate-600 font-bold">${r.class}</span></td>
+                    <td class="p-3 text-center font-black text-emerald-600">${r.score}</td>
+                    <td class="p-3 text-slate-400 text-xs">${r.timestamp}</td>
+                    <td class="p-3 text-slate-600 italic">${r.impression || '-'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function exportToCSV() {
+            const records = JSON.parse(localStorage.getItem('quiz_records') || '[]');
+            if (records.length === 0) {
+                alert("Belum ada data untuk diunduh!");
+                return;
+            }
+
+            let csv = "No,Nama Siswa,Kelas,Nilai,Waktu,Kesan Pesan\n";
+            records.forEach((r, idx) => {
+                const cleanImpression = (r.impression || '-').replace(/"/g, '""');
+                csv += `"${idx + 1}","${r.name}","${r.class}","${r.score}","${r.timestamp}","${cleanImpression}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Rekap_Nilai_Bahasa_Indonesia_Kelas3_${Date.now()}.csv`;
+            a.click();
+        }
+
+        function clearAllData() {
+            if (confirm("Apakah Anda yakin ingin menghapus seluruh data nilai siswa?")) {
+                localStorage.removeItem('quiz_records');
+                renderTeacherTable();
+            }
         }
 
         function toggleTextSize() {
             playSoundEffect('click');
             isLargeText = !isLargeText;
-            const container = document.getElementById('quizContainer');
+            const container = document.getElementById('viewQuiz');
             if (isLargeText) {
                 container.classList.add('text-large-mode');
-                document.getElementById('btnTextSize').classList.add('bg-sky-100', 'text-sky-800');
+                document.getElementById('btnTextSize').classList.add('bg-emerald-100', 'text-emerald-800');
             } else {
                 container.classList.remove('text-large-mode');
-                document.getElementById('btnTextSize').classList.remove('bg-sky-100', 'text-sky-800');
+                document.getElementById('btnTextSize').classList.remove('bg-emerald-100', 'text-emerald-800');
             }
         }
 
-        function toggleSound() {
-            soundEnabled = !soundEnabled;
-            document.getElementById('soundIcon').innerText = soundEnabled ? '🔊' : '🔇';
-            document.getElementById('soundText').innerText = soundEnabled ? 'Suara' : 'Mute';
-            if (soundEnabled) playSoundEffect('click');
-        }
-
-        // Initialize quiz on load
+        // Initialize on Load
         window.onload = function() {
-            renderQuestion();
+            showLanding();
         };
     </script>
 </body>
