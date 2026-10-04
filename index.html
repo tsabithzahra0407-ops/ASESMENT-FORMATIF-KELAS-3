@@ -10,16 +10,16 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
-            --bg-primary: #F0F7F4;
+            --bg-primary: #F4F9F5;
             --card-bg: #FFFFFF;
             --text-color: #2D3748;
-            --primary: #4A7C59;
-            --primary-light: #E8F0EC;
-            --accent-mint: #8FC0A9;
-            --accent-cream: #FAF3DD;
+            --primary: #3B7A57;
+            --primary-light: #EAF4EE;
+            --accent-mint: #86C8BC;
+            --accent-cream: #FFF8E7;
+            --accent-yellow: #FFD166;
             --accent-orange: #FF9F1C;
-            --accent-blue: #64DFDF;
-            --border-radius: 20px;
+            --border-radius: 24px;
             --font-main: 'Lexend', sans-serif;
             --font-heading: 'Fredoka', cursive;
             --base-font-size: 16px;
@@ -34,6 +34,7 @@
             margin: 0;
             padding: 0;
             font-family: var(--font-main);
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -45,40 +46,39 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
-            background-image: radial-gradient(#8FC0A9 0.75px, transparent 0.75px), radial-gradient(#8FC0A9 0.75px, #F0F7F4 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
+            background-image: radial-gradient(#A2D5C6 1px, transparent 1px), radial-gradient(#A2D5C6 1px, #F4F9F5 1px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
         }
 
         .app-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 720px;
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 4px solid #C8D6AF;
+            box-shadow: 0 12px 35px rgba(59, 122, 87, 0.12);
+            border: 4px solid #C4E3CB;
             overflow: hidden;
             position: relative;
         }
 
-        /* Utility classes */
         .hidden { display: none !important; }
         .text-center { text-align: center; }
 
         /* Header Bar */
         .header-bar {
             background-color: var(--primary-light);
-            padding: 15px 20px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px dashed #C8D6AF;
+            border-bottom: 3px dashed #BDE0C3;
         }
 
         .header-title {
             font-family: var(--font-heading);
             color: var(--primary);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -92,149 +92,186 @@
         .btn-control {
             background: white;
             border: 2px solid var(--accent-mint);
-            padding: 6px 12px;
-            border-radius: 12px;
+            padding: 7px 13px;
+            border-radius: 14px;
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 5px;
-            transition: all 0.2s;
+            gap: 6px;
+            box-shadow: 0 3px 0 var(--accent-mint);
+            transition: all 0.15s ease;
         }
 
-        .btn-control:hover {
-            background-color: var(--accent-cream);
-            transform: translateY(-2px);
+        .btn-control:active {
+            transform: translateY(3px);
+            box-shadow: none;
         }
 
         /* Screen Wrapper */
         .screen {
-            padding: 25px;
+            padding: 28px 22px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Role Selection Screen */
         .mascot-banner {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        .mascot-img {
-            max-width: 180px;
+        .mascot-svg {
+            width: 170px;
             height: auto;
-            border-radius: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
         }
 
         .welcome-title {
             font-family: var(--font-heading);
-            font-size: 2rem;
+            font-size: 2.1rem;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
         .subtitle {
-            color: #6B7280;
-            margin-bottom: 25px;
+            color: #5A6A7E;
+            font-size: 0.95rem;
         }
 
         .role-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-top: 20px;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 550px) {
             .role-grid { grid-template-columns: 1fr; }
         }
 
         .role-card {
-            background-color: #F8FAF8;
-            border: 3px solid #E2E8F0;
-            border-radius: 16px;
-            padding: 20px;
+            background-color: #FAFCFA;
+            border: 3px solid #D1E5D7;
+            border-radius: 20px;
+            padding: 22px 18px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0 #D1E5D7;
         }
 
         .role-card:hover {
             border-color: var(--primary);
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(74, 124, 89, 0.15);
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 var(--primary);
+        }
+
+        .role-card:active {
+            transform: translateY(3px);
+            box-shadow: none;
         }
 
         .role-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 8px;
+            display: inline-block;
         }
 
         .role-card h3 {
             font-family: var(--font-heading);
             color: var(--primary);
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
         }
 
-        /* Form Inputs */
+        .role-card p {
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        /* Form Controls */
         .input-group {
-            margin-top: 15px;
+            margin-bottom: 18px;
             text-align: left;
         }
 
         .input-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text-color);
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 1rem;
         }
 
         .input-control {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #CBD5E1;
-            border-radius: 10px;
+            padding: 14px 16px;
+            border: 2.5px solid #CBD5E1;
+            border-radius: 14px;
             font-size: 1rem;
-            margin-bottom: 10px;
             outline: none;
+            background-color: #FAFAFA;
+            transition: border-color 0.2s;
         }
 
         .input-control:focus {
             border-color: var(--primary);
+            background-color: #FFFFFF;
         }
 
         .btn-action {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-size: 1.1rem;
+            padding: 15px 24px;
+            border-radius: 16px;
+            font-size: 1.15rem;
             font-weight: 700;
             font-family: var(--font-heading);
             cursor: pointer;
             width: 100%;
-            transition: all 0.2s;
-            box-shadow: 0 4px 0 #2D4F38;
+            transition: all 0.15s ease;
+            box-shadow: 0 5px 0 #28553C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-action:hover {
-            background-color: #3B6347;
+            background-color: #2F6346;
         }
 
         .btn-action:active {
-            transform: translateY(4px);
+            transform: translateY(5px);
             box-shadow: none;
         }
 
-        /* Quiz Screen */
+        .btn-secondary {
+            background-color: #E2E8F0;
+            color: #475569;
+            box-shadow: 0 4px 0 #CBD5E1;
+            margin-top: 10px;
+        }
+
+        /* Quiz UI */
         .quiz-progress-bar {
-            height: 12px;
+            height: 14px;
             background-color: #E2E8F0;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 20px;
+            border: 1px solid #CBD5E1;
         }
 
         .quiz-progress-fill {
@@ -248,57 +285,57 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: #64748B;
-            font-weight: 600;
+            margin-bottom: 16px;
         }
 
         .category-badge {
             background-color: var(--accent-cream);
-            color: #855800;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            color: #8B5E00;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1.5px solid #FFE082;
         }
 
         .question-text {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1E293B;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 22px;
+            line-height: 1.55;
         }
 
         .options-grid {
             display: grid;
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .option-btn {
             background-color: #FFFFFF;
-            border: 2px solid #E2E8F0;
-            padding: 14px 18px;
-            border-radius: 14px;
+            border: 2.5px solid #E2E8F0;
+            padding: 15px 18px;
+            border-radius: 16px;
             text-align: left;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.15s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             font-weight: 500;
+            box-shadow: 0 3px 0 #E2E8F0;
         }
 
         .option-btn:hover {
             border-color: var(--accent-mint);
-            background-color: #F8FAF8;
+            background-color: #F7FCFA;
         }
 
         .option-letter {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             background-color: var(--primary-light);
             color: var(--primary);
             border-radius: 50%;
@@ -306,7 +343,7 @@
             justify-content: center;
             align-items: center;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
         }
 
@@ -314,6 +351,7 @@
             background-color: #DCFCE7;
             border-color: #22C55E;
             color: #14532D;
+            box-shadow: 0 4px 0 #16A34A;
         }
 
         .option-btn.correct .option-letter {
@@ -325,6 +363,7 @@
             background-color: #FEE2E2;
             border-color: #EF4444;
             color: #7F1D1D;
+            box-shadow: 0 4px 0 #DC2626;
         }
 
         .option-btn.wrong .option-letter {
@@ -334,48 +373,44 @@
 
         .explanation-box {
             background-color: #EFF6FF;
-            border-left: 4px solid #3B82F6;
-            padding: 12px 16px;
-            border-radius: 8px;
+            border-left: 5px solid #3B82F6;
+            padding: 14px 18px;
+            border-radius: 12px;
             margin-bottom: 20px;
             font-size: 0.95rem;
             color: #1E40AF;
+            line-height: 1.45;
         }
 
-        /* Result & Feedback Screen */
+        /* Result & Feedback */
         .score-display {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-family: var(--font-heading);
             color: var(--primary);
-            margin: 15px 0;
+            margin: 12px 0;
+            text-shadow: 2px 2px 0 #C4E3CB;
         }
 
         .feedback-area {
-            margin-top: 25px;
+            margin-top: 22px;
             text-align: left;
-            background-color: #F8FAF8;
+            background-color: #FAFCFA;
             padding: 20px;
-            border-radius: 14px;
+            border-radius: 18px;
             border: 2px solid #E2E8F0;
-        }
-
-        .feedback-area label {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 8px;
-            color: var(--primary);
         }
 
         .feedback-area textarea {
             width: 100%;
-            height: 90px;
-            padding: 10px;
+            height: 95px;
+            padding: 12px;
             border: 2px solid #CBD5E1;
-            border-radius: 8px;
+            border-radius: 12px;
             resize: none;
             font-size: 0.95rem;
             outline: none;
-            margin-bottom: 15px;
+            margin-top: 8px;
+            margin-bottom: 16px;
         }
 
         /* Teacher Dashboard */
@@ -388,39 +423,36 @@
 
         .teacher-table th, .teacher-table td {
             border: 1px solid #E2E8F0;
-            padding: 10px;
+            padding: 12px 10px;
             text-align: left;
         }
 
         .teacher-table th {
             background-color: var(--primary-light);
             color: var(--primary);
+            font-weight: 700;
         }
 
         .stat-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
         .stat-card {
-            background-color: #F8FAF8;
-            padding: 15px;
-            border-radius: 12px;
+            background-color: #FAFCFA;
+            padding: 14px;
+            border-radius: 14px;
             text-align: center;
             border: 2px solid #E2E8F0;
         }
 
         .stat-number {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: var(--primary);
             font-family: var(--font-heading);
-        }
-
-        .search-box {
-            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -438,21 +470,21 @@
             </div>
         </div>
 
-        <!-- 1. Screen Pilihan Role / Landing Page -->
+        <!-- 1. Screen Halaman Utama (Role Selection) -->
         <div id="roleScreen" class="screen">
             <div class="mascot-banner">
-                <!-- SVG Gambar Guru & Siswa Ramah Anak -->
-                <svg width="180" height="120" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="200" height="130" rx="15" fill="#E8F0EC"/>
+                <!-- SVG Maskot Guru & Siswa -->
+                <svg class="mascot-svg" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="130" rx="18" fill="#EAF4EE"/>
                     <!-- Guru -->
                     <circle cx="65" cy="45" r="22" fill="#FFD166"/>
-                    <rect x="45" y="70" width="40" height="45" rx="8" fill="#4A7C59"/>
+                    <rect x="45" y="70" width="40" height="45" rx="8" fill="#3B7A57"/>
                     <circle cx="58" cy="40" r="3" fill="#2D3748"/>
                     <circle cx="72" cy="40" r="3" fill="#2D3748"/>
                     <path d="M 58 52 Q 65 58 72 52" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round" fill="none"/>
                     <!-- Siswa -->
                     <circle cx="135" cy="55" r="18" fill="#F4A261"/>
-                    <rect x="120" y="76" width="30" height="40" rx="6" fill="#8FC0A9"/>
+                    <rect x="120" y="76" width="30" height="40" rx="6" fill="#86C8BC"/>
                     <circle cx="129" cy="52" r="2.5" fill="#2D3748"/>
                     <circle cx="141" cy="52" r="2.5" fill="#2D3748"/>
                     <path d="M 129 62 Q 135 66 141 62" stroke="#2D3748" stroke-width="2" stroke-linecap="round" fill="none"/>
@@ -462,59 +494,76 @@
             </div>
 
             <div class="role-grid">
-                <!-- Pilihan Siswa -->
-                <div class="role-card" onclick="showStudentForm()">
+                <!-- Card Siswa -->
+                <div class="role-card" onclick="goToStudentForm()">
                     <div class="role-icon">👧👦</div>
                     <h3>Siswa</h3>
-                    <p style="font-size: 0.85rem; color: #64748B;">Mulai kerjakan kuis latihan Bab 2</p>
+                    <p>Mulai kerjakan kuis latihan Bab 2</p>
                 </div>
-                <!-- Pilihan Guru -->
-                <div class="role-card" onclick="showTeacherForm()">
+                <!-- Card Guru -->
+                <div class="role-card" onclick="goToTeacherForm()">
                     <div class="role-icon">👩‍🏫</div>
                     <h3>Guru</h3>
-                    <p style="font-size: 0.85rem; color: #64748B;">Lihat rekap nilai & pesan siswa (PIN: 1234)</p>
+                    <p>Lihat rekap nilai & pesan siswa (PIN: 1234)</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Form Input Siswa -->
-            <div id="studentForm" class="input-group hidden">
+        <!-- 2. Screen Form Siswa -->
+        <div id="studentFormScreen" class="screen hidden">
+            <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 6px;">Selamat Datang, Anak Pintar! 👋</h2>
+            <p style="color: #64748B; margin-bottom: 20px;">Silakan isi nama dan pilih kelas kamu ya sebelum memulai kuis.</p>
+
+            <div class="input-group">
                 <label for="studentName">Nama Lengkap Siswa:</label>
                 <input type="text" id="studentName" class="input-control" placeholder="Ketik nama kamu di sini...">
+            </div>
+
+            <div class="input-group">
                 <label for="studentClass">Pilih Kelas:</label>
                 <select id="studentClass" class="input-control">
                     <option value="Kelas 3A">Kelas 3A</option>
                     <option value="Kelas 3B">Kelas 3B</option>
                     <option value="Kelas 3C">Kelas 3C</option>
                 </select>
-                <button class="btn-action" onclick="startQuiz()">Mulai Kerjakan Kuis 🚀</button>
             </div>
 
-            <!-- Form Input Guru -->
-            <div id="teacherForm" class="input-group hidden">
-                <label for="teacherPin">Masukkan PIN Guru (Default: 1234):</label>
-                <input type="password" id="teacherPin" class="input-control" placeholder="Ketik PIN di sini...">
-                <button class="btn-action" onclick="accessTeacherDashboard()">Masuk Dashboard Guru 🔑</button>
-            </div>
+            <button class="btn-action" onclick="startQuiz()">Mulai Kerjakan Kuis 🚀</button>
+            <button class="btn-action btn-secondary" onclick="backToRoleScreen()">⬅ Kembali</button>
         </div>
 
-        <!-- 2. Screen Kuis -->
+        <!-- 3. Screen Form PIN Guru -->
+        <div id="teacherFormScreen" class="screen hidden">
+            <h2 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 6px;">Akses Dashboard Guru 🔑</h2>
+            <p style="color: #64748B; margin-bottom: 20px;">Masukkan PIN keamanan untuk melihat hasil rekap nilai siswa.</p>
+
+            <div class="input-group">
+                <label for="teacherPin">PIN Guru (Default: 1234):</label>
+                <input type="password" id="teacherPin" class="input-control" placeholder="Ketik PIN di sini...">
+            </div>
+
+            <button class="btn-action" onclick="accessTeacherDashboard()">Masuk Dashboard Guru ➔</button>
+            <button class="btn-action btn-secondary" onclick="backToRoleScreen()">⬅ Kembali</button>
+        </div>
+
+        <!-- 4. Screen Kuis Interaktif -->
         <div id="quizScreen" class="screen hidden">
             <div class="quiz-progress-bar">
                 <div id="progressFill" class="quiz-progress-fill"></div>
             </div>
 
             <div class="question-meta">
-                <span id="questionCount">Soal 1 dari 10</span>
+                <span id="questionCount" style="font-weight:700; color:#64748B;">Soal 1 dari 10</span>
                 <span id="categoryBadge" class="category-badge">Mengamati Gambar</span>
                 <button class="btn-control" onclick="readQuestionAloud()">🔊 Baca Soal</button>
             </div>
 
             <div id="questionText" class="question-text">
-                Pertanyaan akan muncul di sini...
+                Pertanyaan kuis akan muncul di sini...
             </div>
 
             <div id="optionsContainer" class="options-grid">
-                <!-- Pilihan Jawaban Muncul via JS -->
+                <!-- Pilihan Jawaban Muncul via JavaScript -->
             </div>
 
             <div id="explanationBox" class="explanation-box hidden">
@@ -524,25 +573,25 @@
             <button id="nextBtn" class="btn-action hidden" onclick="nextQuestion()">Soal Berikutnya ➔</button>
         </div>
 
-        <!-- 3. Screen Hasil & Kesan Pesan Siswa -->
+        <!-- 5. Screen Hasil & Kesan Pesan -->
         <div id="resultScreen" class="screen hidden text-center">
             <h2 style="font-family: var(--font-heading); color: var(--primary);">Hebat! Kuis Selesai 🎉</h2>
-            <p style="color: #64748B; margin-top: 5px;">Terima kasih sudah berusaha dengan baik!</p>
+            <p style="color: #64748B; margin-top: 4px;">Terima kasih sudah belajar dengan sungguh-sungguh!</p>
 
             <div class="score-display" id="scoreDisplay">0</div>
 
             <div class="feedback-area">
-                <label for="studentFeedback">✍️ Tuliskan Kesan & Pesan Kamu Tentangan Kuis Ini:</label>
-                <textarea id="studentFeedback" placeholder="Contoh: Kuisnya seru banget dan gambarnya mudah dipahami!"></textarea>
+                <label for="studentFeedback" style="color: var(--primary); font-weight:700;">✍️ Tuliskan Kesan & Pesan Kamu Tentangan Kuis Ini:</label>
+                <textarea id="studentFeedback" placeholder="Contoh: Kuisnya seru dan gambarnya mudah dipahami!"></textarea>
                 <button class="btn-action" onclick="saveFeedbackAndFinish()">Simpan & Selesai 💾</button>
             </div>
         </div>
 
-        <!-- 4. Screen Dashboard Guru -->
+        <!-- 6. Screen Dashboard Guru -->
         <div id="teacherScreen" class="screen hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
                 <h2 style="font-family: var(--font-heading); color: var(--primary);">Dashboard Rekap Nilai Guru</h2>
-                <button class="btn-control" onclick="location.reload()">⬅ Ke Halaman Utama</button>
+                <button class="btn-control" onclick="location.reload()">⬅ Keluar</button>
             </div>
 
             <div class="stat-cards">
@@ -559,7 +608,7 @@
                 </div>
             </div>
 
-            <input type="text" id="searchStudent" class="input-control search-box" placeholder="Cari nama siswa..." onkeyup="filterTeacherTable()">
+            <input type="text" id="searchStudent" class="input-control" style="margin-bottom: 15px;" placeholder="Cari nama siswa..." onkeyup="filterTeacherTable()">
 
             <div style="overflow-x: auto;">
                 <table class="teacher-table">
@@ -573,7 +622,7 @@
                         </tr>
                     </thead>
                     <tbody id="teacherTableBody">
-                        <!-- Data Rekap Hasil Siswa -->
+                        <!-- Rekap Data Siswa -->
                     </tbody>
                 </table>
             </div>
@@ -582,7 +631,7 @@
 
     <script>
         /* -------------------------------------------------------------
-           DATA SOAL BAB 2: KAWAN SEIRING (SESUAI TP & MATERI CANVA)
+           DATA SOAL BAB 2: KAWAN SEIRING (SESUAI TP SLIDE CANVA)
            1. Mengamati Gambar & Pesan Visual
            2. Menulis Cerita (Awal, Tengah, dan Akhir)
            3. Menyimak Petunjuk Lisan
@@ -605,35 +654,35 @@
                 question: "Di perpustakaan sekolah terdapat gambar anak menempelkan jari telunjuk di depan bibir ('Ssst...'). Apa arti pesan dari gambar tersebut?",
                 options: [
                     "Diperbolehkan berbicara keras",
-                    "Diminta untuk tenang dan tidak berisik",
-                    "Boleh makan dan minum"
+                    "Diminta untuk tenang dan menjaga ketenangan",
+                    "Boleh makan dan minum di dalam"
                 ],
                 answer: 1,
-                explanation: "Simbol menempelkan jari telunjuk di bibir memberikan pesan visual agar pengunjung tetap tenang dan menjaga ketenangan."
+                explanation: "Simbol menempelkan jari telunjuk di bibir memberikan pesan visual agar pengunjung tetap tenang dan tidak berisik."
             },
             {
                 category: "Mengamati Gambar",
-                question: "Perhatikan gambar berikut di taman: Ada gambar tempat sampah dengan dua warna (Organik dan Anorganik). Pesan visual apa yang disampaikan?",
+                question: "Perhatikan gambar di taman: Ada tempat sampah berwarna Organik dan Anorganik. Pesan visual apa yang ingin disampaikan gambar tersebut?",
                 options: [
                     "Membuang sampah harus dipilah sesuai jenisnya",
                     "Dilarang membuang sampah di taman",
-                    "Tempat sampah hanya untuk hiasan"
+                    "Tempat sampah hanya digunakan untuk hiasan"
                 ],
                 answer: 0,
-                explanation: "Gambar tempat sampah terpisah mengajarkan kita untuk memilah sampah organik dan sampah anorganik saat membuang sampah."
+                explanation: "Gambar tempat sampah terpisah mengajarkan kita untuk memilah sampah organik dan anorganik saat membuang sampah."
             },
             
             // Materi 2: Menulis Cerita (Awal, Tengah, Akhir)
             {
                 category: "Struktur Cerita",
-                question: "Bagian alur cerita yang berisi pengenalan tokoh utama, tempat, dan waktu terjadinya peristiwa dinamakan bagian...",
+                question: "Bagian cerita yang berisi pengenalan tokoh utama, tempat, dan waktu terjadinya cerita dinamakan bagian...",
                 options: [
                     "Awal Cerita",
                     "Tengah Cerita",
                     "Akhir Cerita"
                 ],
                 answer: 0,
-                explanation: "Bagian awal cerita berfungsi mengenalkan siapa tokohnya, di mana tempatnya, dan kapan cerita itu terjadi."
+                explanation: "Bagian awal cerita berfungsi mengenalkan siapa tokohnya, di mana tempat kejadiannya, dan kapan cerita terjadi."
             },
             {
                 category: "Struktur Cerita",
@@ -644,7 +693,7 @@
                     "Akhir Cerita"
                 ],
                 answer: 1,
-                explanation: "Bagian tengah cerita berisi puncak kejadian atau masalah yang harus dihadapi oleh tokoh utama."
+                explanation: "Bagian tengah cerita berisi puncak kejadian atau masalah/konflik yang dialami oleh tokoh utama."
             },
             {
                 category: "Struktur Cerita",
@@ -672,14 +721,14 @@
             // Materi 3: Menyimak Petunjuk Lisan
             {
                 category: "Menyimak Petunjuk Lisan",
-                question: "Ibu Guru memberi petunjuk lisan: 'Anak-anak, bukalah buku Bahasa Indonesia halaman 25, lalu kerjakan nomor 1 sampai 5.' Apa sikap menyimak yang baik saat mendengarkan petunjuk tersebut?",
+                question: "Ibu Guru memberi petunjuk lisan: 'Anak-anak, bukalah buku Bahasa Indonesia halaman 25, lalu kerjakan nomor 1 sampai 5.' Sikap menyimak yang benar adalah...",
                 options: [
-                    "Mendengarkan dengan tenang dan mencatat/mengingat nomor halaman yang disebutkan",
+                    "Mendengarkan dengan tenang dan mengingat halaman yang disebutkan",
                     "Ngobrol dengan teman di sebelah",
                     "Langsung menggambar di buku menggambar"
                 ],
                 answer: 0,
-                explanation: "Sikap menyimak yang benar adalah mendengarkan dengan konsentrasi agar dapat mengikuti instruksi dengan tepat."
+                explanation: "Sikap menyimak yang benar adalah mendengarkan secara fokus agar dapat mengikuti petunjuk guru dengan tepat."
             },
             {
                 category: "Menyimak Petunjuk Lisan",
@@ -690,7 +739,7 @@
                     "Mengangkat tangan lalu bertanya dengan sopan: 'Maaf Bu, bolehkah diulangi?'"
                 ],
                 answer: 2,
-                explanation: "Mengangkat tangan dan bertanya secara santun adalah cara terbaik jika belum memahami petunjuk lisan."
+                explanation: "Mengangkat tangan dan bertanya secara santun adalah cara terbaik jika kurang memahami petunjuk lisan."
             },
             {
                 category: "Menyimak Petunjuk Lisan",
@@ -706,26 +755,28 @@
         ];
 
         /* -------------------------------------------------------------
-           STATE APP & VARIABLES
+           STATE APP & NAVIGASI SCREEN
         ------------------------------------------------------------- */
         let currentQuestionIndex = 0;
         let currentScore = 0;
         let currentUser = { name: '', class: '' };
         let isAudioPlaying = false;
         let audioCtx = null;
-        let bgmOscillator = null;
 
-        /* -------------------------------------------------------------
-           ROLE MANAGEMENT
-        ------------------------------------------------------------- */
-        function showStudentForm() {
-            document.getElementById('studentForm').classList.remove('hidden');
-            document.getElementById('teacherForm').classList.add('hidden');
+        function goToStudentForm() {
+            document.getElementById('roleScreen').classList.add('hidden');
+            document.getElementById('studentFormScreen').classList.remove('hidden');
         }
 
-        function showTeacherForm() {
-            document.getElementById('teacherForm').classList.remove('hidden');
-            document.getElementById('studentForm').classList.add('hidden');
+        function goToTeacherForm() {
+            document.getElementById('roleScreen').classList.add('hidden');
+            document.getElementById('teacherFormScreen').classList.remove('hidden');
+        }
+
+        function backToRoleScreen() {
+            document.getElementById('studentFormScreen').classList.add('hidden');
+            document.getElementById('teacherFormScreen').classList.add('hidden');
+            document.getElementById('roleScreen').classList.remove('hidden');
         }
 
         function startQuiz() {
@@ -740,7 +791,7 @@
             currentUser.name = nameInput;
             currentUser.class = classInput;
 
-            document.getElementById('roleScreen').classList.add('hidden');
+            document.getElementById('studentFormScreen').classList.add('hidden');
             document.getElementById('quizScreen').classList.remove('hidden');
             
             loadQuestion();
@@ -749,7 +800,7 @@
         function accessTeacherDashboard() {
             const pin = document.getElementById('teacherPin').value;
             if (pin === '1234') {
-                document.getElementById('roleScreen').classList.add('hidden');
+                document.getElementById('teacherFormScreen').classList.add('hidden');
                 document.getElementById('teacherScreen').classList.remove('hidden');
                 loadTeacherData();
             } else {
@@ -758,21 +809,21 @@
         }
 
         /* -------------------------------------------------------------
-           QUIZ ENGINE
+           ENGINE KUIS INTERAKTIF
         ------------------------------------------------------------- */
         function loadQuestion() {
             const q = quizData[currentQuestionIndex];
             
-            // Update Progress Bar & Badges
+            // Progress Bar & Meta
             const progressPct = ((currentQuestionIndex + 1) / quizData.length) * 100;
             document.getElementById('progressFill').style.width = progressPct + '%';
             document.getElementById('questionCount').innerText = `Soal ${currentQuestionIndex + 1} dari ${quizData.length}`;
             document.getElementById('categoryBadge').innerText = q.category;
             
-            // Set Question Text
+            // Question Text
             document.getElementById('questionText').innerText = q.question;
             
-            // Clear & Populate Options
+            // Options Container
             const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
             
@@ -796,20 +847,18 @@
             const q = quizData[currentQuestionIndex];
             const buttons = document.querySelectorAll('.option-btn');
             
-            // Disable all options after selection
             buttons.forEach(btn => btn.style.pointerEvents = 'none');
 
             if (selectedIndex === q.answer) {
                 buttons[selectedIndex].classList.add('correct');
                 currentScore += 10;
-                playTone(523.25, 0.2); // Success tone C5
+                playTone(523.25, 0.2); // Success Tone C5
             } else {
                 buttons[selectedIndex].classList.add('wrong');
                 buttons[q.answer].classList.add('correct');
-                playTone(220, 0.3); // Low wrong tone
+                playTone(220, 0.3); // Wrong Tone
             }
 
-            // Show explanation & Next Button
             const expBox = document.getElementById('explanationBox');
             expBox.innerHTML = `<strong>💡 Pembahasan:</strong> ${q.explanation}`;
             expBox.classList.remove('hidden');
@@ -831,7 +880,6 @@
             document.getElementById('resultScreen').classList.remove('hidden');
             document.getElementById('scoreDisplay').innerText = currentScore;
 
-            // Trigger Confetti Celebration
             if (typeof confetti === 'function') {
                 confetti({
                     particleCount: 100,
@@ -844,7 +892,6 @@
         function saveFeedbackAndFinish() {
             const feedback = document.getElementById('studentFeedback').value.trim() || "Tidak ada pesan.";
             
-            // Save to LocalStorage
             const existingResults = JSON.parse(localStorage.getItem('quiz_results_bab2') || '[]');
             existingResults.push({
                 name: currentUser.name,
@@ -860,7 +907,7 @@
         }
 
         /* -------------------------------------------------------------
-           TEACHER DASHBOARD FUNCTIONS
+           DASHBOARD GURU & EXPORT
         ------------------------------------------------------------- */
         function loadTeacherData() {
             const results = JSON.parse(localStorage.getItem('quiz_results_bab2') || '[]');
@@ -918,7 +965,7 @@
         }
 
         /* -------------------------------------------------------------
-           ACCESSIBILITY & AUDIO (TTS & BGM)
+           FITUR AKSESIBILITAS & SUARA (TTS / BGM)
         ------------------------------------------------------------- */
         function toggleTextSize() {
             document.body.classList.toggle('large-text');
@@ -926,19 +973,18 @@
 
         function readQuestionAloud() {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Stop current speech
+                window.speechSynthesis.cancel();
                 const q = quizData[currentQuestionIndex];
                 const textToRead = `${q.question}. Pilihan A: ${q.options[0]}. Pilihan B: ${q.options[1]}. Pilihan C: ${q.options[2]}.`;
                 const utterance = new SpeechSynthesisUtterance(textToRead);
                 utterance.lang = 'id-ID';
-                utterance.rate = 0.9; // Slightly slower for children
+                utterance.rate = 0.9;
                 window.speechSynthesis.speak(utterance);
             } else {
-                alert('Fitur pembaca suara tidak didukung di browser ini.');
+                alert('Browser ini belum mendukung pembaca suara.');
             }
         }
 
-        // Web Audio Synthesizer for cozy BGM & Tones
         function initAudio() {
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -964,7 +1010,6 @@
             if (isAudioPlaying) {
                 isAudioPlaying = false;
                 btn.innerText = '🎵 Musik: Off';
-                if (bgmOscillator) bgmOscillator.stop();
             } else {
                 isAudioPlaying = true;
                 btn.innerText = '🎵 Musik: On';
@@ -974,9 +1019,7 @@
 
         function playCozyLofiBGM() {
             if (!isAudioPlaying || !audioCtx) return;
-            
-            // Soft calming pentatonic melody notes
-            const notes = [261.63, 329.63, 392.00, 523.25, 440.00]; 
+            const notes = [261.63, 329.63, 392.00, 523.25, 440.00];
             let noteIdx = 0;
 
             function playNextNote() {
@@ -987,7 +1030,7 @@
                 osc.type = 'sine';
                 osc.frequency.value = notes[noteIdx % notes.length];
                 
-                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
 
                 osc.connect(gain);
