@@ -17,8 +17,6 @@
             --primary-light: #EAF4EE;
             --accent-mint: #86C8BC;
             --accent-cream: #FFF8E7;
-            --accent-yellow: #FFD166;
-            --accent-orange: #FF9F1C;
             --border-radius: 24px;
             --font-main: 'Lexend', sans-serif;
             --font-heading: 'Fredoka', cursive;
@@ -90,7 +88,7 @@
         }
 
         .btn-control {
-            background: white;
+            background: #FFFFFF;
             border: 2px solid var(--accent-mint);
             padding: 7px 13px;
             border-radius: 14px;
@@ -231,7 +229,7 @@
 
         .btn-action {
             background-color: var(--primary);
-            color: white;
+            color: #FFFFFF;
             border: none;
             padding: 15px 24px;
             border-radius: 16px;
@@ -356,7 +354,7 @@
 
         .option-btn.correct .option-letter {
             background-color: #22C55E;
-            color: white;
+            color: #FFFFFF;
         }
 
         .option-btn.wrong {
@@ -368,7 +366,7 @@
 
         .option-btn.wrong .option-letter {
             background-color: #EF4444;
-            color: white;
+            color: #FFFFFF;
         }
 
         .explanation-box {
@@ -462,27 +460,24 @@
         <!-- Header Bar -->
         <div class="header-bar">
             <div class="header-title">
-                🌟 Petualangan Bahasa
+                Petualangan Bahasa
             </div>
             <div class="controls-group">
                 <button class="btn-control" onclick="toggleTextSize()">Aa Teks</button>
-                <button class="btn-control" id="bgmToggleBtn" onclick="toggleBGM()">🎵 Musik</button>
+                <button class="btn-control" id="bgmToggleBtn" onclick="toggleBGM()">Musik</button>
             </div>
         </div>
 
         <!-- 1. Screen Halaman Utama (Role Selection) -->
         <div id="roleScreen" class="screen">
             <div class="mascot-banner">
-                <!-- SVG Maskot Guru & Siswa -->
                 <svg class="mascot-svg" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="200" height="130" rx="18" fill="#EAF4EE"/>
-                    <!-- Guru -->
                     <circle cx="65" cy="45" r="22" fill="#FFD166"/>
                     <rect x="45" y="70" width="40" height="45" rx="8" fill="#3B7A57"/>
                     <circle cx="58" cy="40" r="3" fill="#2D3748"/>
                     <circle cx="72" cy="40" r="3" fill="#2D3748"/>
                     <path d="M 58 52 Q 65 58 72 52" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                    <!-- Siswa -->
                     <circle cx="135" cy="55" r="18" fill="#F4A261"/>
                     <rect x="120" y="76" width="30" height="40" rx="6" fill="#86C8BC"/>
                     <circle cx="129" cy="52" r="2.5" fill="#2D3748"/>
@@ -494,13 +489,11 @@
             </div>
 
             <div class="role-grid">
-                <!-- Card Siswa -->
                 <div class="role-card" onclick="goToStudentForm()">
                     <div class="role-icon">👧👦</div>
                     <h3>Siswa</h3>
                     <p>Mulai kerjakan kuis latihan Bab 2</p>
                 </div>
-                <!-- Card Guru -->
                 <div class="role-card" onclick="goToTeacherForm()">
                     <div class="role-icon">👩‍🏫</div>
                     <h3>Guru</h3>
@@ -529,7 +522,7 @@
             </div>
 
             <button class="btn-action" onclick="startQuiz()">Mulai Kerjakan Kuis 🚀</button>
-            <button class="btn-action btn-secondary" onclick="backToRoleScreen()">⬅ Kembali</button>
+            <button class="btn-action btn-secondary" onclick="backToRoleScreen()">Kembali</button>
         </div>
 
         <!-- 3. Screen Form PIN Guru -->
@@ -542,8 +535,8 @@
                 <input type="password" id="teacherPin" class="input-control" placeholder="Ketik PIN di sini...">
             </div>
 
-            <button class="btn-action" onclick="accessTeacherDashboard()">Masuk Dashboard Guru ➔</button>
-            <button class="btn-action btn-secondary" onclick="backToRoleScreen()">⬅ Kembali</button>
+            <button class="btn-action" onclick="accessTeacherDashboard()">Masuk Dashboard Guru</button>
+            <button class="btn-action btn-secondary" onclick="backToRoleScreen()">Kembali</button>
         </div>
 
         <!-- 4. Screen Kuis Interaktif -->
@@ -555,7 +548,7 @@
             <div class="question-meta">
                 <span id="questionCount" style="font-weight:700; color:#64748B;">Soal 1 dari 10</span>
                 <span id="categoryBadge" class="category-badge">Mengamati Gambar</span>
-                <button class="btn-control" onclick="readQuestionAloud()">🔊 Baca Soal</button>
+                <button class="btn-control" onclick="readQuestionAloud()">Baca Soal</button>
             </div>
 
             <div id="questionText" class="question-text">
@@ -563,14 +556,14 @@
             </div>
 
             <div id="optionsContainer" class="options-grid">
-                <!-- Pilihan Jawaban Muncul via JavaScript -->
+                <!-- Pilihan Jawaban -->
             </div>
 
             <div id="explanationBox" class="explanation-box hidden">
                 <!-- Penjelasan Soal -->
             </div>
 
-            <button id="nextBtn" class="btn-action hidden" onclick="nextQuestion()">Soal Berikutnya ➔</button>
+            <button id="nextBtn" class="btn-action hidden" onclick="nextQuestion()">Soal Berikutnya</button>
         </div>
 
         <!-- 5. Screen Hasil & Kesan Pesan -->
@@ -581,9 +574,9 @@
             <div class="score-display" id="scoreDisplay">0</div>
 
             <div class="feedback-area">
-                <label for="studentFeedback" style="color: var(--primary); font-weight:700;">✍️ Tuliskan Kesan & Pesan Kamu Tentangan Kuis Ini:</label>
+                <label for="studentFeedback" style="color: var(--primary); font-weight:700;">Tuliskan Kesan & Pesan Kamu Tentang Kuis Ini:</label>
                 <textarea id="studentFeedback" placeholder="Contoh: Kuisnya seru dan gambarnya mudah dipahami!"></textarea>
-                <button class="btn-action" onclick="saveFeedbackAndFinish()">Simpan & Selesai 💾</button>
+                <button class="btn-action" onclick="saveFeedbackAndFinish()">Simpan & Selesai</button>
             </div>
         </div>
 
@@ -591,7 +584,7 @@
         <div id="teacherScreen" class="screen hidden">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
                 <h2 style="font-family: var(--font-heading); color: var(--primary);">Dashboard Rekap Nilai Guru</h2>
-                <button class="btn-control" onclick="location.reload()">⬅ Keluar</button>
+                <button class="btn-control" onclick="location.reload()">Keluar</button>
             </div>
 
             <div class="stat-cards">
@@ -604,7 +597,7 @@
                     <div style="font-size: 0.8rem; color: #64748B;">Rata-rata Nilai</div>
                 </div>
                 <div class="stat-card">
-                    <button class="btn-control" style="width: 100%; height: 100%; justify-content: center;" onclick="exportToCSV()">📥 Unduh CSV</button>
+                    <button class="btn-control" style="width: 100%; height: 100%; justify-content: center;" onclick="exportToCSV()">Unduh CSV</button>
                 </div>
             </div>
 
@@ -630,14 +623,8 @@
     </div>
 
     <script>
-        /* -------------------------------------------------------------
-           DATA SOAL BAB 2: KAWAN SEIRING (SESUAI TP SLIDE CANVA)
-           1. Mengamati Gambar & Pesan Visual
-           2. Menulis Cerita (Awal, Tengah, dan Akhir)
-           3. Menyimak Petunjuk Lisan
-        ------------------------------------------------------------- */
+        /* SOAL KUIS SESUAI SLIDE CANVA */
         const quizData = [
-            // Materi 1: Mengamati Gambar & Pesan Visual
             {
                 category: "Mengamati Gambar",
                 question: "Saat melihat gambar rambu lalu lintas bertuliskan huruf 'P' yang dicoret garis merah, apa pesan visual yang disampaikan gambar tersebut?",
@@ -651,7 +638,7 @@
             },
             {
                 category: "Mengamati Gambar",
-                question: "Di perpustakaan sekolah terdapat gambar anak menempelkan jari telunjuk di depan bibir ('Ssst...'). Apa arti pesan dari gambar tersebut?",
+                question: "Di perpustakaan sekolah terdapat gambar anak menempelkan jari telunjuk di depan bibir. Apa arti pesan dari gambar tersebut?",
                 options: [
                     "Diperbolehkan berbicara keras",
                     "Diminta untuk tenang dan menjaga ketenangan",
@@ -662,7 +649,7 @@
             },
             {
                 category: "Mengamati Gambar",
-                question: "Perhatikan gambar di taman: Ada tempat sampah berwarna Organik dan Anorganik. Pesan visual apa yang ingin disampaikan gambar tersebut?",
+                question: "Di taman terdapat tempat sampah Organik dan Anorganik. Pesan visual apa yang ingin disampaikan gambar tersebut?",
                 options: [
                     "Membuang sampah harus dipilah sesuai jenisnya",
                     "Dilarang membuang sampah di taman",
@@ -671,8 +658,6 @@
                 answer: 0,
                 explanation: "Gambar tempat sampah terpisah mengajarkan kita untuk memilah sampah organik dan anorganik saat membuang sampah."
             },
-            
-            // Materi 2: Menulis Cerita (Awal, Tengah, Akhir)
             {
                 category: "Struktur Cerita",
                 question: "Bagian cerita yang berisi pengenalan tokoh utama, tempat, dan waktu terjadinya cerita dinamakan bagian...",
@@ -686,18 +671,18 @@
             },
             {
                 category: "Struktur Cerita",
-                question: "Pada bagian manakah dalam sebuah cerita biasanya muncul masalah, tantangan, atau kejadian seru yang dialami tokoh?",
+                question: "Pada bagian manakah dalam sebuah cerita biasanya muncul masalah atau kejadian seru yang dialami tokoh?",
                 options: [
                     "Awal Cerita",
                     "Tengah Cerita",
                     "Akhir Cerita"
                 ],
                 answer: 1,
-                explanation: "Bagian tengah cerita berisi puncak kejadian atau masalah/konflik yang dialami oleh tokoh utama."
+                explanation: "Bagian tengah cerita berisi puncak kejadian atau masalah yang dialami oleh tokoh utama."
             },
             {
                 category: "Struktur Cerita",
-                question: "Bacalah cerita singkat ini: 'Akhirnya, Lani dan Siti saling bermaafan. Mereka kembali bermain sepeda bersama dengan riang.' Kalimat tersebut terletak pada bagian...",
+                question: "Bacalah kalimat ini: 'Akhirnya, Lani dan Siti saling bermaafan. Mereka kembali bermain bersama.' Kalimat tersebut terletak pada bagian...",
                 options: [
                     "Awal Cerita",
                     "Tengah Cerita",
@@ -710,18 +695,16 @@
                 category: "Struktur Cerita",
                 question: "Urutan penulisan cerita terstruktur yang benar dan runtut adalah...",
                 options: [
-                    "Tengah ➔ Awal ➔ Akhir",
-                    "Awal ➔ Tengah ➔ Akhir",
-                    "Akhir ➔ Awal ➔ Tengah"
+                    "Tengah, Awal, Akhir",
+                    "Awal, Tengah, Akhir",
+                    "Akhir, Awal, Tengah"
                 ],
                 answer: 1,
                 explanation: "Urutan cerita yang runtut dimulai dari Awal (pengenalan), Tengah (masalah), hingga Akhir (penyelesaian)."
             },
-
-            // Materi 3: Menyimak Petunjuk Lisan
             {
                 category: "Menyimak Petunjuk Lisan",
-                question: "Ibu Guru memberi petunjuk lisan: 'Anak-anak, bukalah buku Bahasa Indonesia halaman 25, lalu kerjakan nomor 1 sampai 5.' Sikap menyimak yang benar adalah...",
+                question: "Ibu Guru memberi petunjuk lisan: 'Anak-anak, bukalah buku halaman 25, lalu kerjakan nomor 1 sampai 5.' Sikap menyimak yang benar adalah...",
                 options: [
                     "Mendengarkan dengan tenang dan mengingat halaman yang disebutkan",
                     "Ngobrol dengan teman di sebelah",
@@ -732,18 +715,18 @@
             },
             {
                 category: "Menyimak Petunjuk Lisan",
-                question: "Jika kamu kurang jelas mendengar petunjuk lisan yang disampaikan oleh Guru, tindakan santun yang sebaiknya kamu lakukan adalah...",
+                question: "Jika kamu kurang jelas mendengar petunjuk lisan dari Guru, tindakan santun yang sebaiknya kamu lakukan adalah...",
                 options: [
                     "Acuh tak acuh dan diam saja",
                     "Mengejek guru karena suaranya pelan",
-                    "Mengangkat tangan lalu bertanya dengan sopan: 'Maaf Bu, bolehkah diulangi?'"
+                    "Mengangkat tangan lalu bertanya dengan sopan"
                 ],
                 answer: 2,
                 explanation: "Mengangkat tangan dan bertanya secara santun adalah cara terbaik jika kurang memahami petunjuk lisan."
             },
             {
                 category: "Menyimak Petunjuk Lisan",
-                question: "Pak Guru menyampaikan: 'Sebelum melipat kertas, buatlah garis lurus menggunakan penggaris.' Langkah pertama yang harus kamu lakukan sesuai petunjuk lisan adalah...",
+                question: "Pak Guru menyampaikan: 'Sebelum melipat kertas, buatlah garis lurus menggunakan penggaris.' Langkah pertama yang harus dilakukan adalah...",
                 options: [
                     "Melipat kertas terlebih dahulu",
                     "Membuat garis lurus menggunakan penggaris",
@@ -754,9 +737,7 @@
             }
         ];
 
-        /* -------------------------------------------------------------
-           STATE APP & NAVIGASI SCREEN
-        ------------------------------------------------------------- */
+        /* STATE APP */
         let currentQuestionIndex = 0;
         let currentScore = 0;
         let currentUser = { name: '', class: '' };
@@ -808,22 +789,16 @@
             }
         }
 
-        /* -------------------------------------------------------------
-           ENGINE KUIS INTERAKTIF
-        ------------------------------------------------------------- */
         function loadQuestion() {
             const q = quizData[currentQuestionIndex];
             
-            // Progress Bar & Meta
             const progressPct = ((currentQuestionIndex + 1) / quizData.length) * 100;
             document.getElementById('progressFill').style.width = progressPct + '%';
-            document.getElementById('questionCount').innerText = `Soal ${currentQuestionIndex + 1} dari ${quizData.length}`;
+            document.getElementById('questionCount').innerText = 'Soal ' + (currentQuestionIndex + 1) + ' dari ' + quizData.length;
             document.getElementById('categoryBadge').innerText = q.category;
             
-            // Question Text
             document.getElementById('questionText').innerText = q.question;
             
-            // Options Container
             const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
             
@@ -834,11 +809,8 @@
             q.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
-                btn.onclick = () => selectOption(idx);
-                btn.innerHTML = `
-                    <div class="option-letter">${letters[idx]}</div>
-                    <div>${opt}</div>
-                `;
+                btn.onclick = function() { selectOption(idx); };
+                btn.innerHTML = '<div class="option-letter">' + letters[idx] + '</div><div>' + opt + '</div>';
                 container.appendChild(btn);
             });
         }
@@ -852,15 +824,15 @@
             if (selectedIndex === q.answer) {
                 buttons[selectedIndex].classList.add('correct');
                 currentScore += 10;
-                playTone(523.25, 0.2); // Success Tone C5
+                playTone(523.25, 0.2);
             } else {
                 buttons[selectedIndex].classList.add('wrong');
                 buttons[q.answer].classList.add('correct');
-                playTone(220, 0.3); // Wrong Tone
+                playTone(220, 0.3);
             }
 
             const expBox = document.getElementById('explanationBox');
-            expBox.innerHTML = `<strong>💡 Pembahasan:</strong> ${q.explanation}`;
+            expBox.innerHTML = '<strong>💡 Pembahasan:</strong> ' + q.explanation;
             expBox.classList.remove('hidden');
 
             document.getElementById('nextBtn').classList.remove('hidden');
@@ -906,9 +878,6 @@
             location.reload();
         }
 
-        /* -------------------------------------------------------------
-           DASHBOARD GURU & EXPORT
-        ------------------------------------------------------------- */
         function loadTeacherData() {
             const results = JSON.parse(localStorage.getItem('quiz_results_bab2') || '[]');
             const tbody = document.getElementById('teacherTableBody');
@@ -919,13 +888,7 @@
             results.forEach((res, index) => {
                 totalScore += res.score;
                 const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td><strong>${res.name}</strong></td>
-                    <td>${res.class}</td>
-                    <td><span style="color: #22C55E; font-weight:700;">${res.score}</span></td>
-                    <td>${res.feedback}</td>
-                `;
+                tr.innerHTML = '<td>' + (index + 1) + '</td><td><strong>' + res.name + '</strong></td><td>' + res.class + '</td><td><span style="color: #22C55E; font-weight:700;">' + res.score + '</span></td><td>' + res.feedback + '</td>';
                 tbody.appendChild(tr);
             });
 
@@ -952,21 +915,18 @@
 
             let csv = 'No,Nama Siswa,Kelas,Nilai,Kesan dan Pesan\n';
             results.forEach((r, idx) => {
-                csv += `"${idx + 1}","${r.name}","${r.class}","${r.score}","${r.feedback.replace(/"/g, '""')}"\n`;
+                csv += '"' + (idx + 1) + '","' + r.name + '","' + r.class + '","' + r.score + '","' + r.feedback.replace(/"/g, '""') + '"\n';
             });
 
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.setAttribute('download', 'Rekap_Nilai_Bab2_KawanSeiring.csv');
+            link.setAttribute('download', 'Rekap_Nilai_Bab2.csv');
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
-        /* -------------------------------------------------------------
-           FITUR AKSESIBILITAS & SUARA (TTS / BGM)
-        ------------------------------------------------------------- */
         function toggleTextSize() {
             document.body.classList.toggle('large-text');
         }
@@ -975,13 +935,13 @@
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const q = quizData[currentQuestionIndex];
-                const textToRead = `${q.question}. Pilihan A: ${q.options[0]}. Pilihan B: ${q.options[1]}. Pilihan C: ${q.options[2]}.`;
+                const textToRead = q.question + '. Pilihan A: ' + q.options[0] + '. Pilihan B: ' + q.options[1] + '. Pilihan C: ' + q.options[2];
                 const utterance = new SpeechSynthesisUtterance(textToRead);
                 utterance.lang = 'id-ID';
                 utterance.rate = 0.9;
                 window.speechSynthesis.speak(utterance);
             } else {
-                alert('Browser ini belum mendukung pembaca suara.');
+                alert('Browser tidak mendukung suara.');
             }
         }
 
@@ -1009,10 +969,10 @@
             const btn = document.getElementById('bgmToggleBtn');
             if (isAudioPlaying) {
                 isAudioPlaying = false;
-                btn.innerText = '🎵 Musik: Off';
+                btn.innerText = 'Musik: Off';
             } else {
                 isAudioPlaying = true;
-                btn.innerText = '🎵 Musik: On';
+                btn.innerText = 'Musik: On';
                 playCozyLofiBGM();
             }
         }
